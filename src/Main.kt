@@ -5,12 +5,11 @@ open class MobilePhone(
     private val memory: Int // объем памяти в ГБ
 ) {
 
-    // Метод для вычисления качества объекта Q
+    // вычисления качества объекта Q
     open fun quality(): Double {
         return memory.toDouble() / price
     }
 
-    // Метод для вывода информации об объекте
     open fun info(): String {
         return "Марка: $brand, Цена: $price, Объем памяти: $memory ГБ, Качество: ${quality()}"
     }
@@ -24,7 +23,7 @@ class DualSimMobilePhone(
     private val simCount: Int // количество SIM-карт
 ) : MobilePhone(brand, price, memory) {
 
-    // Метод для вычисления качества объекта Qp
+    //вычисления качества объекта Qp
     override fun quality(): Double {
         return super.quality() * simCount
     }
@@ -36,7 +35,7 @@ class DualSimMobilePhone(
 }
 
 fun main() {
-    // Ввод значений для первого уровня
+   
     println("Введите марку мобильного телефона:")
     val brand = readLine() ?: "Неизвестно"
 
@@ -46,19 +45,19 @@ fun main() {
     println("Введите объем памяти (ГБ):")
     val memory = readLine()?.toIntOrNull() ?: 0
 
-    // Создание объекта класса MobilePhone
+   
     val phone = MobilePhone(brand, price, memory)
 
-    // Вывод информации об объекте первого уровня
+ 
     println(phone.info())
 
-    // Ввод значений для второго уровня
+  
     println("Введите количество SIM-карт:")
     val simCount = readLine()?.toIntOrNull() ?: 1
 
-    // Создание объекта класса DualSimMobilePhone
+  
     val dualSimPhone = DualSimMobilePhone(brand, price, memory, simCount)
 
-    // Вывод информации об объекте второго уровня
+
     println(dualSimPhone.info())
 }
